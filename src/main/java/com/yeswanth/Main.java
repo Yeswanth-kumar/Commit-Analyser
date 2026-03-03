@@ -4,13 +4,19 @@ import com.yeswanth.commitanalyser.GitChangeExtractor;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Commit Analyser started...");
-
         GitChangeExtractor extractor = new GitChangeExtractor();
-        String diff = extractor.getDiff();
 
-        System.out.println("------ GIT DIFF START ------");
+        String diff = extractor.getDiff();
+        String files = extractor.getModifiedFiles();
+        String summary = extractor.getCommitMessage();
+
+        System.out.println("----- COMMIT SUMMARY -----");
+        System.out.println(summary);
+
+        System.out.println("----- MODIFIED FILES -----");
+        System.out.println(files);
+
+        System.out.println("----- DIFF -----");
         System.out.println(diff);
-        System.out.println("------ GIT DIFF END ------");
     }
 }
