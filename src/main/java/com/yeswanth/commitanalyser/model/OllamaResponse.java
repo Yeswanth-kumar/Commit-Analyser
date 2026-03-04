@@ -1,4 +1,4 @@
-package com.yeswanth.commitanalyser;
+package com.yeswanth.commitanalyser.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

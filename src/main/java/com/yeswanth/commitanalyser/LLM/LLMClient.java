@@ -1,6 +1,7 @@
-package com.yeswanth.commitanalyser;
+package com.yeswanth.commitanalyser.LLM;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yeswanth.commitanalyser.model.OllamaRequest;
 
 import java.io.*;
 import java.net.HttpURLConnection;

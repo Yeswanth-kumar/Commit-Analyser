@@ -1,4 +1,4 @@
-package com.yeswanth.commitanalyser;
+package com.yeswanth.commitanalyser.git;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
