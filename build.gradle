@@ -3,6 +3,10 @@ plugins {
     id 'application'
 }
 
+jar {
+    archiveFileName = "commit-analyser.jar"
+}
+
 group = 'com.yeswanth'
 version = '1.0'
 
