@@ -1,7 +1,7 @@
 name: AI Commit Analysis
 
-permissions:
-  contents: write
+#permissions:
+#  contents: write
 
 on:
   push:
@@ -27,8 +27,8 @@ jobs:
       - name: Build project
         run: ./gradlew shadowJar
 
-      - name: Show build artifacts (debug)
-        run: ls build/libs
+#      - name: Show build artifacts (debug)
+#        run: ls build/libs
 
       - name: Run analyzer
         run: java -jar build/libs/commit-analyser.jar HEAD~1 HEAD
@@ -41,10 +41,10 @@ jobs:
             impact-report.json
             impact-comment.md
 
-      - name: Commit generated report
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git add impact-comment.md
-          git commit -m "Add AI impact report"
-          git push
+#      - name: Commit generated report
+#        run: |
+#          git config --global user.name "github-actions"
+#          git config --global user.email "actions@github.com"
+#          git add impact-comment.md
+#          git commit -m "Add AI impact report"
+#          git push
