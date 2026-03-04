@@ -19,7 +19,7 @@ public class CommitImpactAnalyzer {
 
         String summary = extractor.getCommitMessage();
         String files = extractor.getModifiedFiles();
-        String diff = extractor.getDiff("HEAD~1", "HEAD");
+        String diff = extractor.getDiff("origin/main", "HEAD");
 
         if (diff == null || diff.isBlank()) {
             System.out.println("No changes detected between branches.");
