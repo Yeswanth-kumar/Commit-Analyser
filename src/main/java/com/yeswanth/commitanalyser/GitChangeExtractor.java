@@ -5,8 +5,10 @@ import java.io.InputStreamReader;
 
 public class GitChangeExtractor {
 
-    public String getDiff() throws Exception {
-        ProcessBuilder pb = new ProcessBuilder("git", "diff", "HEAD~1", "HEAD");
+    public String getDiff(String baseBranch, String headBranch) throws Exception {
+        ProcessBuilder pb = new ProcessBuilder(
+                "git", "diff", baseBranch, headBranch
+        );
         pb.redirectErrorStream(true);
 
         Process process = pb.start();
