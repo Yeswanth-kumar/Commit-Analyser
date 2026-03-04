@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build project
-        run: run: ./gradlew clean build -x test
+        run: ./gradlew clean build -x test
 
       - name: Run analyzer
         run: java -jar build/libs/commit-analyser.jar HEAD~1 HEAD
