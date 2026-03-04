@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yeswanth.commitanalyser.*;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -37,5 +40,40 @@ public class Main {
                 .writeValue(new File("impact-report.json"), result);
 
         System.out.println("\nImpact report saved to impact-report.json");
+
+        String markdown = buildMarkdownReport(result, files);
+
+        Files.writeString(
+                Path.of("impact-comment.md"),
+                markdown,
+                StandardCharsets.UTF_8
+        );
+    }
+
+    private static String buildMarkdownReport(ImpactResponse result, String files) {
+
+        StringBuilder md = new StringBuilder();
+
+        md.append("## 🤖 AI Change Impact Analysis\n\n");
+        md.append("**Risk Level:** ").append(result.riskLevel).append("\n\n");
+
+        md.append("### Changed Files\n");
+        for (String file : files.split("\n")) {
+            if (!file.isBlank()) {
+                md.append("- ").append(file).append("\n");
+            }
+        }
+
+        md.append("\n### Regression Focus\n");
+        for (String item : result.regressionFocus) {
+            md.append("- [ ] ").append(item).append("\n");
+        }
+
+        md.append("\n### Suggested Tests\n");
+        for (String item : result.suggestedTests) {
+            md.append("- [ ] ").append(item).append("\n");
+        }
+
+        return md.toString();
     }
 }
