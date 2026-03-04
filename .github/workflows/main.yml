@@ -22,7 +22,7 @@ jobs:
           java-version: '21'
 
       - name: Build project
-        run: ./gradlew clean build -x test
+        run: ./gradlew shadowJar
 
       - name: Show build artifacts (debug)
         run: ls build/libs
