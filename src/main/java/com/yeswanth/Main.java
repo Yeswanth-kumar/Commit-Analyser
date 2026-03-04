@@ -9,14 +9,11 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        String baseBranch = args.length > 0 ? args[0] : "origin/main";
-        String headBranch = args.length > 1 ? args[1] : "HEAD";
-
         GitChangeExtractor extractor = new GitChangeExtractor();
 
         String summary = extractor.getCommitMessage();
         String files = extractor.getModifiedFiles();
-        String diff = extractor.getDiff(baseBranch, headBranch);
+        String diff = extractor.getDiff("HEAD~1", "HEAD");
 
         if (diff == null || diff.isBlank()) {
             System.out.println("No changes detected between branches.");
